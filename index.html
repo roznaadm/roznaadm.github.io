@@ -1,73 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Carli Susanto</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carli Susanto</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-    }
+<style>
+:root {
+  --bg: #0f172a;
+  --text: white;
+  --card: #1e293b;
+}
 
-    h1 {
-      margin-bottom: 10px;
-    }
+.light {
+  --bg: #f1f5f9;
+  --text: #0f172a;
+  --card: white;
+}
 
-    .links a {
-      display: block;
-      margin: 10px auto;
-      padding: 15px;
-      width: 250px;
-      background: #1e293b;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+  transition: 0.3s;
+}
 
-    .links a:hover {
-      background: #38bdf8;
-      color: black;
-    }
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
 
-    iframe {
-      margin-top: 20px;
-      max-width: 100%;
-      border-radius: 10px;
-    }
+img.profile {
+  width: 120px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
 
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
-  </style>
+h1 {
+  margin: 10px 0;
+}
+
+.bio {
+  opacity: 0.7;
+}
+
+.links a {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 20px;
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  transform: scale(1.05);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  padding: 10px;
+  background: var(--card);
+  border-radius: 10px;
+}
+</style>
 </head>
 
 <body>
 
+<div class="toggle" onclick="toggleMode()">🌙 / ☀️</div>
+
 <div class="container">
-  <h1>🚀 Carli Susanto</h1>
-  <p>Welcome to my social hub</p>
 
-  <div class="links">
-    <a href="https://www.tiktok.com/@carli.eth" target="_blank">🎵 TikTok</a>
-    <a href="https://www.youtube.com/@C-Quest/" target="_blank">▶️ YouTube</a>
-    <a href="https://www.facebook.com/charlie.akatsuki/" target="_blank">📘 Facebook</a>
-    <a href="https://x.com/CharlieAkatsuki" target="_blank">🐦 X (Twitter)</a>
-  </div>
+<img class="profile" src="https://i.pravatar.cc/150" alt="profile">
 
-  <h2>🔥 Latest YouTube</h2>
-  <iframe width="560" height="315" 
-  src="https://www.youtube.com/embed?listType=user_uploads&list=C-Quest"
-  frameborder="0" allowfullscreen></iframe>
+<h1>🚀 Carli Susanto</h1>
+<p class="bio">Content Creator | Crypto | Web3</p>
+
+<div class="links">
+  <a href="https://www.tiktok.com/@carli.eth" target="_blank">TikTok</a>
+  <a href="https://www.youtube.com/@C-Quest/" target="_blank">YouTube</a>
+  <a href="https://www.facebook.com/charlie.akatsuki/" target="_blank">Facebook</a>
+  <a href="https://x.com/CharlieAkatsuki" target="_blank">X</a>
+</div>
+
+<h2>🔥 TikTok Videos</h2>
+
+<div class="grid">
+  <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@carli.eth"></blockquote>
+</div>
+
+<h2>▶️ YouTube</h2>
+
+<iframe src="https://www.youtube.com/embed?listType=user_uploads&list=C-Quest"></iframe>
 
 </div>
+
+<script async src="https://www.tiktok.com/embed.js"></script>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("light");
+}
+</script>
 
 </body>
 </html>

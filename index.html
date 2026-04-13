@@ -42,10 +42,6 @@ body {
   border-radius: 50%;
 }
 
-h1 {
-  margin: 10px 0;
-}
-
 /* LINKS */
 .links {
   text-align: center;
@@ -66,7 +62,7 @@ h1 {
   transform: scale(1.1);
 }
 
-/* 3 COLUMN FEED */
+/* FEED */
 .feed {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -86,6 +82,12 @@ h1 {
   border-radius: 12px;
 }
 
+/* TikTok fix */
+.tiktok-embed {
+  margin: auto !important;
+}
+
+/* iframe */
 iframe {
   width: 100%;
   height: 250px;
@@ -131,7 +133,7 @@ iframe {
   <a href="https://x.com/CharlieAkatsuki" target="_blank">X</a>
 </div>
 
-<!-- FEED 3 KOLOM -->
+<!-- FEED -->
 <div class="feed">
 
   <!-- TikTok -->
@@ -139,7 +141,18 @@ iframe {
     <h3>🎵 TikTok</h3>
 
     <div class="card">
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@carli.eth"></blockquote>
+      <blockquote class="tiktok-embed"
+      cite="https://www.tiktok.com/@carli.eth/video/7626147395079802133"></blockquote>
+    </div>
+
+    <div class="card">
+      <blockquote class="tiktok-embed"
+      cite="https://www.tiktok.com/@carli.eth/video/7610033689593924885"></blockquote>
+    </div>
+
+    <div class="card">
+      <blockquote class="tiktok-embed"
+      cite="https://www.tiktok.com/@carli.eth/video/7611466091168140565"></blockquote>
     </div>
 
   </div>
@@ -155,7 +168,9 @@ iframe {
     <h3>🐦 X</h3>
 
     <div class="card">
-      <a class="twitter-timeline" data-height="600" href="https://x.com/CharlieAkatsuki">Tweets</a>
+      <iframe 
+      src="https://twitframe.com/show?url=https://x.com/CharlieAkatsuki"
+      width="100%" height="500"></iframe>
     </div>
 
   </div>
@@ -166,7 +181,6 @@ iframe {
 
 <!-- SCRIPT -->
 <script async src="https://www.tiktok.com/embed.js"></script>
-<script async src="https://platform.twitter.com/widgets.js"></script>
 
 <script>
 function toggleMode() {

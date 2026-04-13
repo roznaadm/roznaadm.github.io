@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
   padding: 20px;
 }
@@ -69,16 +69,18 @@ body {
   border-radius: 12px;
 }
 
-/* TikTok fix */
-.tiktok-embed {
-  margin: auto !important;
-}
-
 /* iframe */
 iframe {
   width: 100%;
   height: 250px;
   border-radius: 10px;
+}
+
+/* widget styling */
+.sk-tiktok-feed,
+.sk-ww-twitter-feed {
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 /* MOBILE */
@@ -114,22 +116,9 @@ iframe {
   <!-- TikTok -->
   <div class="column">
     <h3>🎵 TikTok</h3>
-
     <div class="card">
-      <blockquote class="tiktok-embed"
-      cite="https://www.tiktok.com/@carli.eth/video/7626147395079802133"></blockquote>
+      <div class="sk-tiktok-feed" data-embed-id="25672206"></div>
     </div>
-
-    <div class="card">
-      <blockquote class="tiktok-embed"
-      cite="https://www.tiktok.com/@carli.eth/video/7610033689593924885"></blockquote>
-    </div>
-
-    <div class="card">
-      <blockquote class="tiktok-embed"
-      cite="https://www.tiktok.com/@carli.eth/video/7611466091168140565"></blockquote>
-    </div>
-
   </div>
 
   <!-- YouTube -->
@@ -150,25 +139,21 @@ iframe {
 
   </div>
 
-  <!-- X -->
+  <!-- X / Twitter -->
   <div class="column">
     <h3>🐦 X</h3>
-
     <div class="card">
-      <p>Follow me on X:</p>
-      <a href="https://x.com/CharlieAkatsuki" target="_blank">
-        👉 Open X Profile
-      </a>
+      <div class="sk-ww-twitter-feed" data-embed-id="25672207"></div>
     </div>
-
   </div>
 
 </div>
 
 </div>
 
-<!-- TikTok script (WAJIB 1x saja) -->
-<script async src="https://www.tiktok.com/embed.js"></script>
+<!-- SCRIPT (WAJIB DI BAWAH & 1x SAJA) -->
+<script src="https://widgets.sociablekit.com/tiktok-feed/widget.js" defer></script>
+<script src="https://widgets.sociablekit.com/twitter-feed/widget.js" defer></script>
 
 </body>
 </html>

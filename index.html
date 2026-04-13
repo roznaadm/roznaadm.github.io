@@ -20,10 +20,9 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: var(--bg);
   color: var(--text);
-  text-align: center;
   transition: 0.3s;
 }
 
@@ -31,20 +30,26 @@ body {
   max-width: 900px;
   margin: auto;
   padding: 20px;
+  text-align: center;
 }
 
-img.profile {
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile {
   width: 120px;
   border-radius: 50%;
-  margin-top: 20px;
-}
-
-h1 {
-  margin: 10px 0;
-}
-
-.bio {
-  opacity: 0.7;
 }
 
 .links a {
@@ -52,21 +57,20 @@ h1 {
   margin: 10px;
   padding: 12px 20px;
   background: var(--card);
-  color: var(--text);
-  text-decoration: none;
   border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
   transition: 0.3s;
 }
 
 .links a:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 15px;
-  margin-top: 20px;
 }
 
 iframe {
@@ -79,9 +83,9 @@ iframe {
   position: fixed;
   top: 10px;
   right: 10px;
-  cursor: pointer;
-  padding: 10px;
   background: var(--card);
+  padding: 10px;
+  cursor: pointer;
   border-radius: 10px;
 }
 </style>
@@ -89,40 +93,46 @@ iframe {
 
 <body>
 
-<div class="toggle" onclick="toggleMode()">🌙 / ☀️</div>
+<div class="toggle" onclick="toggleMode()">🌙</div>
 
-<div class="container">
+<div class="container fade">
 
-<img class="profile" src="https://i.pravatar.cc/150" alt="profile">
+<img class="profile" src="https://pbs.twimg.com/profile_images/1879046675286941697/oV-q5rRK_400x400.jpg">
 
 <h1>🚀 Carli Susanto</h1>
-<p class="bio">Content Creator | Crypto | Web3</p>
+<p>Content Creator | Web3 | Crypto</p>
 
 <div class="links">
-  <a href="https://www.tiktok.com/@carli.eth" target="_blank">TikTok</a>
-  <a href="https://www.youtube.com/@C-Quest/" target="_blank">YouTube</a>
-  <a href="https://www.facebook.com/charlie.akatsuki/" target="_blank">Facebook</a>
-  <a href="https://x.com/CharlieAkatsuki" target="_blank">X</a>
+  <a href="https://www.tiktok.com/@carli.eth">TikTok</a>
+  <a href="https://www.youtube.com/@C-Quest/">YouTube</a>
+  <a href="https://www.facebook.com/charlie.akatsuki/">Facebook</a>
+  <a href="https://x.com/CharlieAkatsuki">X</a>
 </div>
 
-<h2>🔥 TikTok Videos</h2>
+<h2>▶️ Latest YouTube</h2>
 
-<div class="grid">
-  <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@carli.eth"></blockquote>
-</div>
-
-<h2>▶️ YouTube</h2>
-
-<iframe src="https://www.youtube.com/embed?listType=user_uploads&list=C-Quest"></iframe>
+<div class="grid" id="youtube"></div>
 
 </div>
-
-<script async src="https://www.tiktok.com/embed.js"></script>
 
 <script>
 function toggleMode() {
   document.body.classList.toggle("light");
 }
+
+/* AUTO FETCH YOUTUBE (RSS trick) */
+fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UCaJVCODUCzyxO2bK4mVURRg")
+.then(res => res.json())
+.then(data => {
+  const container = document.getElementById("youtube");
+
+  data.items.slice(0,6).forEach(video => {
+    const id = video.link.split("v=")[1];
+    container.innerHTML += `
+      <iframe src="https://www.youtube.com/embed/${id}" loading="lazy"></iframe>
+    `;
+  });
+});
 </script>
 
 </body>

@@ -6,28 +6,15 @@
 <title>Carli Susanto</title>
 
 <style>
-:root {
-  --bg: #0f172a;
-  --text: white;
-  --card: #1e293b;
-}
-
-.light {
-  --bg: #f1f5f9;
-  --text: #0f172a;
-  --card: white;
-}
-
 body {
   margin: 0;
   font-family: Arial;
-  background: var(--bg);
-  color: var(--text);
-  transition: 0.3s;
+  background: #0f172a;
+  color: white;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
   padding: 20px;
 }
@@ -51,10 +38,10 @@ body {
   display: inline-block;
   margin: 8px;
   padding: 10px 18px;
-  background: var(--card);
+  background: #1e293b;
   border-radius: 10px;
   text-decoration: none;
-  color: var(--text);
+  color: white;
   transition: 0.3s;
 }
 
@@ -62,8 +49,8 @@ body {
   transform: scale(1.1);
 }
 
-/* FEED */
-.feed {
+/* GRID */
+.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -77,7 +64,7 @@ body {
 }
 
 .card {
-  background: var(--card);
+  background: #1e293b;
   padding: 10px;
   border-radius: 12px;
 }
@@ -96,26 +83,14 @@ iframe {
 
 /* MOBILE */
 @media (max-width: 900px) {
-  .feed {
+  .grid {
     grid-template-columns: 1fr;
   }
-}
-
-.toggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: var(--card);
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 10px;
 }
 </style>
 </head>
 
 <body>
-
-<div class="toggle" onclick="toggleMode()">🌙</div>
 
 <div class="container">
 
@@ -128,13 +103,13 @@ iframe {
 
 <!-- LINKS -->
 <div class="links">
-  <a href="https://www.tiktok.com/@carli.eth" target="_blank">TikTok</a>
-  <a href="https://www.youtube.com/@C-Quest/" target="_blank">YouTube</a>
-  <a href="https://x.com/CharlieAkatsuki" target="_blank">X</a>
+  <a href="https://www.tiktok.com/@carli.eth" target="_blank">🎵 TikTok</a>
+  <a href="https://www.youtube.com/@C-Quest/" target="_blank">▶️ YouTube</a>
+  <a href="https://x.com/CharlieAkatsuki" target="_blank">🐦 X</a>
 </div>
 
-<!-- FEED -->
-<div class="feed">
+<!-- GRID -->
+<div class="grid">
 
   <!-- TikTok -->
   <div class="column">
@@ -160,7 +135,19 @@ iframe {
   <!-- YouTube -->
   <div class="column">
     <h3>▶️ YouTube</h3>
-    <div id="youtube"></div>
+
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/wkSxOg_7CHw"></iframe>
+    </div>
+
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/9F5QYo-pZO4"></iframe>
+    </div>
+
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/h7imPcXUGbs"></iframe>
+    </div>
+
   </div>
 
   <!-- X -->
@@ -168,9 +155,10 @@ iframe {
     <h3>🐦 X</h3>
 
     <div class="card">
-      <iframe 
-      src="https://twitframe.com/show?url=https://x.com/CharlieAkatsuki"
-      width="100%" height="500"></iframe>
+      <p>Follow me on X:</p>
+      <a href="https://x.com/CharlieAkatsuki" target="_blank">
+        👉 Open X Profile
+      </a>
     </div>
 
   </div>
@@ -179,30 +167,8 @@ iframe {
 
 </div>
 
-<!-- SCRIPT -->
+<!-- TikTok script (WAJIB 1x saja) -->
 <script async src="https://www.tiktok.com/embed.js"></script>
-
-<script>
-function toggleMode() {
-  document.body.classList.toggle("light");
-}
-
-/* YOUTUBE AUTO LOAD */
-fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UCaJVCODUCzyxO2bK4mVURRg")
-.then(res => res.json())
-.then(data => {
-  const container = document.getElementById("youtube");
-
-  data.items.slice(0,6).forEach(video => {
-    const id = video.link.split("v=")[1];
-    container.innerHTML += `
-      <div class="card">
-        <iframe src="https://www.youtube.com/embed/${id}" loading="lazy"></iframe>
-      </div>
-    `;
-  });
-});
-</script>
 
 </body>
 </html>

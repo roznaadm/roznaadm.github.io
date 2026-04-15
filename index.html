@@ -89,6 +89,24 @@ iframe {
   overflow: hidden;
 }
 
+/* COUNTER FLOAT */
+.counter-box {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #1e293b;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  opacity: 0.9;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.counter-box:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
   .grid {
@@ -107,9 +125,6 @@ iframe {
   <img class="profile" src="https://pbs.twimg.com/profile_images/1879046675286941697/oV-q5rRK_400x400.jpg">
   <h1>Carli Susanto</h1>
   <p>Content Creator | Web3 | Crypto</p>
-
-  <!-- COUNTER -->
-  <p id="counter">👀 Visitors: loading...</p>
 </div>
 
 <!-- LINKS -->
@@ -183,21 +198,30 @@ iframe {
 
 </div>
 
+<!-- COUNTER FLOAT -->
+<div id="counter" class="counter-box">
+  👀 Visitors: loading...
+</div>
+
 <!-- SCRIPT -->
 
-<!-- TikTok Widget -->
+<!-- TikTok -->
 <script src="https://widgets.sociablekit.com/tiktok-feed/widget.js" defer></script>
 
-<!-- X Widget -->
+<!-- X -->
 <script src="https://widgets.sociablekit.com/twitter-feed/widget.js" defer></script>
 
-<!-- Visitor Counter -->
+<!-- COUNTER FIX -->
 <script>
 fetch('https://api.countapi.xyz/hit/carlisusanto.me/visits')
   .then(res => res.json())
   .then(data => {
     document.getElementById('counter').innerText =
       "👀 Visitors: " + data.value;
+  })
+  .catch(() => {
+    document.getElementById('counter').innerText =
+      "👀 Visitors: offline";
   });
 </script>
 

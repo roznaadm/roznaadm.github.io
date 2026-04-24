@@ -213,15 +213,15 @@ iframe {
 
 <!-- COUNTER FIX -->
 <script>
+const counterEl = document.getElementById('counter');
+
 fetch('https://api.countapi.xyz/hit/carlisusanto.me/visits')
   .then(res => res.json())
   .then(data => {
-    document.getElementById('counter').innerText =
-      "👀 Visitors: " + data.value;
+    counterEl.innerText = "👀 Visitors: " + data.value;
   })
   .catch(() => {
-    document.getElementById('counter').innerText =
-      "👀 Visitors: offline";
+    counterEl.style.display = "none"; // kalau error → hilang saja
   });
 </script>
 

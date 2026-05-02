@@ -75,22 +75,18 @@ body {
   border-radius: 12px;
 }
 
-/* VIDEO NORMAL (YouTube landscape) */
-iframe {
+/* SHORTS (vertical) */
+iframe.shorts {
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 9/16;
   border-radius: 10px;
   border: none;
 }
 
-/* SHORTS (vertical) */
-iframe.shorts {
-  aspect-ratio: 9/16;
-}
-
 /* widget styling */
 .sk-tiktok-feed,
-.sk-ww-twitter-feed {
+.sk-ww-twitter-feed,
+.sk-ww-youtube-channel-videos {
   border-radius: 12px;
   overflow: hidden;
 }
@@ -184,17 +180,9 @@ iframe.shorts {
       </iframe>
     </div>
 
-    <!-- Video biasa -->
+    <!-- YouTube Feed -->
     <div class="card">
-      <iframe src="https://www.youtube.com/embed/wkSxOg_7CHw"></iframe>
-    </div>
-
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/9F5QYo-pZO4"></iframe>
-    </div>
-
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/h7imPcXUGbs"></iframe>
+      <div class="sk-ww-youtube-channel-videos" data-embed-id="25678162"></div>
     </div>
 
   </div>
@@ -215,20 +203,17 @@ iframe.shorts {
 
 </div>
 
-<!-- COUNTER FLOAT -->
+<!-- COUNTER -->
 <div id="counter" class="counter-box">
   👀 Visitors: loading...
 </div>
 
-<!-- SCRIPT -->
+<!-- SCRIPTS -->
 
-<!-- TikTok -->
 <script src="https://widgets.sociablekit.com/tiktok-feed/widget.js" defer></script>
-
-<!-- X -->
 <script src="https://widgets.sociablekit.com/twitter-feed/widget.js" defer></script>
+<script src="https://widgets.sociablekit.com/youtube-channel-videos/widget.js" defer></script>
 
-<!-- COUNTER -->
 <script>
 const counterEl = document.getElementById('counter');
 
